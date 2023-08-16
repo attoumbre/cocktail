@@ -1,29 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Home from '@/views/public/Home.vue'
-import Cocktail from '@/views/public/Cocktail.vue'
-import Contact from '@/views/public/Contact.vue'
-import NotFound from '@/views/public/NotFound.vue'
-import PublicLayout from '@/views/public/Layout.vue'
 
-import AdminLayout from '@/views/admin/Layout.vue'
-import Dashboard from '@/views/admin/Dashboard.vue'
-import UserIndex from '@/views/admin/users/UserIndex.vue'
-import UserAdd from '@/views/admin/users/UserAdd.vue'
-import UserEdit from '@/views/admin/users/UserEdit.vue'
-
-import CocktailIndex from '@/views/admin/cocktails/CocktailIndex.vue'
-import CocktailEdit from '@/views/admin/cocktails/CocktailEdit.vue'
+import * as Public from '@/views/public'
+import {
+  AdminLayout, Dashboard, UserIndex, UserAdd,
+  UserEdit, CocktailIndex, CocktailEdit
+} from '@/views/admin/'
 
 const routes = [
   {
     path:'/', 
     name:'public', 
-    component : PublicLayout,
+    component : Public.PublicLayout,
     children : [
-      {path:'/', name:'home', component : Home},
-       { path:'/Cocktails', name:'Cocktails', component : Cocktail},
-       {path:'/Contact', name:'Contact', component : Contact},
+      {path:'/', name:'home', component : Public.Home},
+       { path:'/Cocktails', name:'Cocktails', component : Public.Cocktail},
+       {path:'/Contact', name:'Contact', component : Public.Contact},
     ]
   }, 
  {
@@ -41,7 +33,7 @@ const routes = [
     ]
  },
  {
-  path:'/:pathMatch(.*)*', component:NotFound
+  path:'/:pathMatch(.*)*', component: Public.NotFound
  }
 //  {
 //   path:'/:pathMatch(.*)*',redirect:'/'
