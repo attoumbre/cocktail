@@ -10,5 +10,4 @@ import CocktailEdit from './cocktails/CocktailEdit.vue'
 export{
     AdminLayout, Dashboard, UserIndex, UserAdd,
     UserEdit, CocktailIndex, CocktailEdit
-
 }
