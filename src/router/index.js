@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 
 import * as Public from '@/views/public'
+import Login from '@/views/auth/Login.vue'
 import {
   AdminLayout, Dashboard, UserIndex, UserAdd,
   UserEdit, CocktailIndex, CocktailEdit
@@ -26,7 +27,7 @@ const routes = [
       {path:'dashboard', name:'dashboard', component : Dashboard},
       { path:'users/index', name:'UserIndex', component : UserIndex},
       { path:'users/add', name:'UserAdd', component : UserAdd},
-      { path:'users/edit/:id', name:'UserEdit', component : UserEdit },
+      { path:'users/edit/:id(\\d+)', name:'UserEdit', component : UserEdit, props:true },
      
       { path:'cocktails/index', name:'CocktailAdd', component : CocktailIndex},
       { path:'cocktails/edit/:id', name:'CocktailEdit', component : CocktailEdit },
@@ -34,6 +35,9 @@ const routes = [
  },
  {
   path:'/:pathMatch(.*)*', component: Public.NotFound
+ },
+ {
+  path:'/login', component: Login
  }
 //  {
 //   path:'/:pathMatch(.*)*',redirect:'/'
