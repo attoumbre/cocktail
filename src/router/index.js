@@ -8,6 +8,7 @@ import {
   UserEdit, CocktailIndex, CocktailEdit
 } from '@/views/admin/'
 
+import { authGuard } from '@/_helpers/auth.guard'
 const routes = [
   {
     path:'/', 
@@ -37,7 +38,7 @@ const routes = [
   path:'/:pathMatch(.*)*', component: Public.NotFound
  },
  {
-  path:'/login', component: Login
+  path:'/login', component: Login , beforeEnter: authGuard 
  }
 //  {
 //   path:'/:pathMatch(.*)*',redirect:'/'
