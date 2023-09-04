@@ -1,10 +1,14 @@
 <template >
-    <div class="admin">
-    <!-- Admin layout -->
+     <div class="admin">    
         <AdminHeader/>
-        <AdminNav/>
-        
-        <router-view/>
+        <div class="ad_contain">
+            <div id="ad_side">
+                <AdminNav/>
+            </div>
+            <div id="ad_display">
+                <router-view/>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -19,6 +23,17 @@ export default {
     
 }
 </script>
-<style >
-    
+<style>
+    .ad_contain{
+        display: flex;
+    }
+    #ad_side{
+        width:20%;
+        border-right: solid 1px black;
+    }
+    #ad_display{
+        width: 100%;
+        padding: 10px;
+        text-align: left;
+    }
 </style>

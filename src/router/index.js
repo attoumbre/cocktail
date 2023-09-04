@@ -8,6 +8,8 @@ import {
   UserEdit, CocktailIndex, CocktailEdit
 } from '@/views/admin/'
 
+// localStorage.setItem('token', 'admin')
+
 import { authGuard } from '@/_helpers/auth.guard'
 const routes = [
   {
@@ -22,7 +24,8 @@ const routes = [
   }, 
  {
     path: '/admin',
-    name:'admin',
+    name:'admin', 
+    beforeEnter: authGuard , 
     component:AdminLayout,
     children: [
       {path:'dashboard', name:'dashboard', component : Dashboard},
@@ -38,8 +41,9 @@ const routes = [
   path:'/:pathMatch(.*)*', component: Public.NotFound
  },
  {
-  path:'/login', component: Login , beforeEnter: authGuard 
+  path:'/login', component: Login 
  }
+//  , beforeEnter: authGuard 
 //  {
 //   path:'/:pathMatch(.*)*',redirect:'/'
 //  }
@@ -48,6 +52,14 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+
+router.beforeEach((to, from, next) => {
+  if(to.matched[0].name == 'admin'){
+    authGuard()
+  }
+  next()
 })
 
 export default router

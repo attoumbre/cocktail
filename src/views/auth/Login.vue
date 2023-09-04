@@ -38,7 +38,15 @@ export default {
     }
 }
 </script>
-<style 
->
-    
+ 
+<style>
+    form{
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .formGroup{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+    }
 </style>
